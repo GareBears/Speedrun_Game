@@ -60,11 +60,11 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
         //Calling FLip Method
-        if(facingRight == false && moveInput > 0)
+        //if(facingRight == false && moveInput > 0)
         {
             Flip();
         }
-        else if(facingRight == true && moveInput < 0)
+        //else if(facingRight == true && moveInput < 0)
         {
             Flip();
         }
