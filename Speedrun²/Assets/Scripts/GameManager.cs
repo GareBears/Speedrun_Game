@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     private int ScoreGoal = 200;
 
     public TMP_Text scoreText;
+    public TMP_Text scoreLeft;
+    public TMP_Text lvlTimer;
+    public TMP_Text endTimer;
+
+    public GameObject firstCamera;
+    public GameObject titleScreen;
 
 
     //Timer Settings
@@ -26,14 +32,13 @@ public class GameManager : MonoBehaviour
     {
         TimeScriptA = GameObject.FindGameObjectWithTag("TimerA").GetComponent<Timer>();
         TimeScriptB = GameObject.FindGameObjectWithTag("TimerB").GetComponent<FinalTimer>();
-        OnButtonClick();
+        //OnButtonClick(); //Debug
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     void Update()
     {
-        scoreText.SetText(ScoreGoal.ToString());
         if(ScoreGoal == 0)
         {
             EndGame();
@@ -63,8 +68,12 @@ public class GameManager : MonoBehaviour
     {
         TimeScriptA.TimeStart();
         TimeScriptB.TimeStartB();
+        scoreText.SetText(ScoreGoal.ToString());
+        scoreLeft.SetText("Score Left: ");
         Debug.Log("Hello");
         Button.SetActive(false);
+        firstCamera.SetActive(false);
+        titleScreen.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////

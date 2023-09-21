@@ -19,7 +19,7 @@ public class FinalTimer : MonoBehaviour
     public void TimeStartB()
     {
         timerIsRunning = true;
-        //timerText.enabled = true;
+        timerText.gameObject.SetActive(true);
     }
 
     // Update is called once per frame

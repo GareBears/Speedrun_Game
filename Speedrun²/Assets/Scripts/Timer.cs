@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour
     public void TimeStart()
     {
         timerIsRunning = true;
+        timerText.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
