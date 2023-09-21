@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     {
         TimeScriptA = GameObject.FindGameObjectWithTag("TimerA").GetComponent<Timer>();
         TimeScriptB = GameObject.FindGameObjectWithTag("TimerB").GetComponent<FinalTimer>();
-        //OnButtonClick(); //Debug
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////

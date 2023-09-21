@@ -13,7 +13,7 @@ public class FinalTimer : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        timerIsRunning = false;
     }
 
     public void TimeStartB()
@@ -25,7 +25,7 @@ public class FinalTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timerIsRunning = true)
+        if(timerIsRunning)
         {
             if(timeUp > 0)
             {
