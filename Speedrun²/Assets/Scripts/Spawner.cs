@@ -18,8 +18,13 @@ public class Spawner : MonoBehaviour
         
     }
 
-    void SpawnPlayer()
+    public void StartGame()
     {
-        Instantiate(Player);
+        
+    }
+
+    public void SpawnPlayer()
+    {
+        Player.transform.Translate (0f, 0.01f, 0f);
     }
 }

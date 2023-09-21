@@ -6,6 +6,8 @@ TagManager:
   tags:
   - TimerA
   - TimerB
+  - Spawner
+  - GameManager
   layers:
   - Default
   - TransparentFX

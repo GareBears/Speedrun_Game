@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     Timer TimeScriptA;
     FinalTimer TimeScriptB;
 
+    //Looping Settings
+    Spawner LoopScript;
+    private Transform destination;
+
     public GameObject Button;
     
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,6 +36,8 @@ public class GameManager : MonoBehaviour
     {
         TimeScriptA = GameObject.FindGameObjectWithTag("TimerA").GetComponent<Timer>();
         TimeScriptB = GameObject.FindGameObjectWithTag("TimerB").GetComponent<FinalTimer>();
+        LoopScript = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+        destination = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Transform>();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,18 +54,21 @@ public class GameManager : MonoBehaviour
 
        public void OnButtonClick()
     {
-        Instantiate(Player);
         BeginGame();
+        Instantiate(Player);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
 
-    //void Restart
-    //{
+    public void Restart()
+    {
+        Player.transform.position = new Vector3(0f, 0.01f, 0f);
+        LoopScript.SpawnPlayer();
+        Debug.Log("TELEPORTIN TIME");
+    
         //Score = timeRemaining;
-        //timeRemaining = 100
-        //SpawnPlayer();
-    //}
+        //timeRemaining = 100;
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
 

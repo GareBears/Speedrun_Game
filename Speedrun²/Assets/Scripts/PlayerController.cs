@@ -70,12 +70,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //FLipping Position
+    //Flipping Position
     void Flip()
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+
+    void Loop()
+    {
+    transform.Translate (0f, 0.01f, 0f);
     }
 }
