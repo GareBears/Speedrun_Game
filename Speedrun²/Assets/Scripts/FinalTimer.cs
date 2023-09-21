@@ -4,21 +4,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Timer : MonoBehaviour
+public class FinalTimer : MonoBehaviour
 {
-    public float timeRemaining = 10;
+    public float timeUp = 10;
     public bool timerIsRunning = false;
     public TMP_Text timerText;
 
     // Start is called before the first frame update
     private void Start()
     {
-        
+
     }
 
-    public void TimeStart()
+    public void TimeStartB()
     {
         timerIsRunning = true;
+        //timerText.enabled = true;
     }
 
     // Update is called once per frame
@@ -26,18 +27,18 @@ public class Timer : MonoBehaviour
     {
         if(timerIsRunning = true)
         {
-            if(timeRemaining > 0)
+            if(timeUp > 0)
             {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
+                timeUp += Time.deltaTime;
+                DisplayTime(timeUp);
             }
             else
             {
                 Debug.Log("Time has run out!");
-                timeRemaining = 0;
+                timeUp = 0;
                 timerIsRunning = false;
             }
-        }
+        } 
     }
 
     void DisplayTime(float timeToDisplay)

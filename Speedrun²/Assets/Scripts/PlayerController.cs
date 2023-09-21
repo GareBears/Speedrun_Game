@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
         //Moving
         moveInput = Input.GetAxis("Horizontal");
-        Debug.Log(moveInput);
+        //Debug.Log(moveInput);
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
         //Calling FLip Method
