@@ -8,6 +8,7 @@ TagManager:
   - TimerB
   - Spawner
   - GameManager
+  - BackgroundPoint
   layers:
   - Default
   - TransparentFX

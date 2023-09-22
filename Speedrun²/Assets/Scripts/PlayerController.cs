@@ -56,15 +56,14 @@ public class PlayerController : MonoBehaviour
 
         //Moving
         moveInput = Input.GetAxis("Horizontal");
-        //Debug.Log(moveInput);
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        //Calling FLip Method
-        //if(facingRight == false && moveInput > 0)
+        //Calling Flip Method
+        if(facingRight == false && moveInput > 0)
         {
             Flip();
         }
-        //else if(facingRight == true && moveInput < 0)
+        else if(facingRight == true && moveInput < 0)
         {
             Flip();
         }
@@ -82,5 +81,14 @@ public class PlayerController : MonoBehaviour
     void Loop()
     {
     transform.Translate (0f, 0.01f, 0f);
+    }
+
+    
+
+    public void JumpBoost()
+    {
+        //GetComponent<Rigidbody2D>().AddForce(transform.up * jumpforce * 100);
+        rb.AddForce(transform.up * jumpforce * 100);
+        Debug.Log("This works");
     }
 }

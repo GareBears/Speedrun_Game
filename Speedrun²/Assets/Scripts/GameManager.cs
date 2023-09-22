@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject Player;
+    PlayerController JumpScriptB;
 
     public int Score;
     private int ScoreGoal = 200;
@@ -39,13 +40,16 @@ public class GameManager : MonoBehaviour
         TimeScriptA = GameObject.FindGameObjectWithTag("TimerA").GetComponent<Timer>();
         TimeScriptB = GameObject.FindGameObjectWithTag("TimerB").GetComponent<FinalTimer>();
         LoopScript = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+        
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     void Update()
     {
-        if(ScoreGoal <= 0)
+        JumpScriptB = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        if (ScoreGoal <= 0)
         {
             EndGame();
             TimeScriptB.ScoreCalc();
@@ -66,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         Player.transform.position = new Vector3(0f, 0.01f, 0f);
         LoopScript.SpawnPlayer();
-        Debug.Log("TELEPORTIN TIME");
+        //Debug.Log("TELEPORTIN TIME");
         TimeScriptA.TimeLoop();
         TimeScriptB.ScoreCalc();
     }
@@ -82,6 +86,15 @@ public class GameManager : MonoBehaviour
     public void FinalScore(float finalscore)
     {
         Score -= (int)finalscore;
+    }
+
+
+
+    public void PlayerJumpBoost()
+    {
+        JumpScriptB.JumpBoost();
+        //Player.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 100);
+        //Debug.Log("This kinda works");
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////

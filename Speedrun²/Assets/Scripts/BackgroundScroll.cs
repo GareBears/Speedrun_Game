@@ -6,7 +6,8 @@ public class BackgroundScroll : MonoBehaviour
 {
     public float scrollSpeed;
     private Renderer renderer;
-
+    public GameObject target;
+    public Vector3 offset = new Vector3(0, 0, 0);
     private Vector2 savedOffset;
 
     // Start is called before the first frame update
@@ -21,5 +22,12 @@ public class BackgroundScroll : MonoBehaviour
         float x = Mathf.Repeat (Time.time * scrollSpeed, 1);
         Vector2 offset = new Vector2 (x, 0);
         renderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
+        target = GameObject.FindGameObjectWithTag("BackgroundPoint");
     }
+
+    private void LateUpdate()
+    {
+        transform.position = target.transform.position + offset;
+    }
+
 }
