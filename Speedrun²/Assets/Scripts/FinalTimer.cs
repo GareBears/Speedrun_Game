@@ -25,6 +25,12 @@ public class FinalTimer : MonoBehaviour
         timerText.gameObject.SetActive(true);
     }
 
+    public void TimeStopB()
+    {
+        timerIsRunning = false;
+        timerText.gameObject.SetActive(false);
+    }
+
     public void ScoreCalc()
     {
         gameManager.FinalScore(timeUp);
@@ -46,7 +52,7 @@ public class FinalTimer : MonoBehaviour
                 timeUp = 0;
                 timerIsRunning = false;
             }
-        } 
+        }
     }
 
     void DisplayTime(float timeToDisplay)

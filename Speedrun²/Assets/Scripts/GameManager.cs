@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(ScoreGoal == 0)
+        if(ScoreGoal <= 0)
         {
             EndGame();
             TimeScriptB.ScoreCalc();
@@ -101,8 +102,10 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
-        titleScreen.SetActive(true);
+        endScreen.SetActive(true);
         RestartButton.SetActive(true);
+        TimeScriptA.TimeStop();
+        TimeScriptB.TimeStopB();
 
         if(Score < 100)
         {
@@ -112,5 +115,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Do Better");
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

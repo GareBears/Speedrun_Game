@@ -33,6 +33,13 @@ public class Timer : MonoBehaviour
         timerText.gameObject.SetActive(true);
     }
 
+    public void TimeStop()
+    {
+        timerIsRunning = false;
+        timerText.gameObject.SetActive(false);
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -49,6 +56,11 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
             }
+        }
+
+        if(timeRemaining < 0)
+        {
+            timeRemaining = 0;
         }
     }
 
