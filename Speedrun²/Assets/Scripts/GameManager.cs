@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject firstCamera;
     public GameObject titleScreen;
+    public GameObject endScreen;
 
 
     //Timer Settings
@@ -26,9 +27,9 @@ public class GameManager : MonoBehaviour
 
     //Looping Settings
     Spawner LoopScript;
-    private Transform destination;
 
     public GameObject Button;
+    public GameObject RestartButton;
     
     //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,7 +38,6 @@ public class GameManager : MonoBehaviour
         TimeScriptA = GameObject.FindGameObjectWithTag("TimerA").GetComponent<Timer>();
         TimeScriptB = GameObject.FindGameObjectWithTag("TimerB").GetComponent<FinalTimer>();
         LoopScript = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
-        destination = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Transform>();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         if(ScoreGoal == 0)
         {
             EndGame();
+            TimeScriptB.ScoreCalc();
         }
     }
 
@@ -65,9 +66,21 @@ public class GameManager : MonoBehaviour
         Player.transform.position = new Vector3(0f, 0.01f, 0f);
         LoopScript.SpawnPlayer();
         Debug.Log("TELEPORTIN TIME");
-    
-        //Score = timeRemaining;
-        //timeRemaining = 100;
+        TimeScriptA.TimeLoop();
+        TimeScriptB.ScoreCalc();
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void UpdateScore(float scoretoadd)
+    {
+        ScoreGoal -= (int)scoretoadd;
+        scoreText.SetText(ScoreGoal.ToString());
+    }
+
+    public void FinalScore(float finalscore)
+    {
+        Score -= (int)finalscore;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,6 +101,9 @@ public class GameManager : MonoBehaviour
 
     void EndGame()
     {
+        titleScreen.SetActive(true);
+        RestartButton.SetActive(true);
+
         if(Score < 100)
         {
             Debug.Log("You Won");

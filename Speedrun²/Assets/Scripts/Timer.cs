@@ -8,12 +8,23 @@ public class Timer : MonoBehaviour
 {
     public float timeRemaining = 10;
     public bool timerIsRunning = false;
+    public float savedtime;
     public TMP_Text timerText;
+
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     private void Start()
     {
         timerIsRunning = false;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
+    public void TimeLoop()
+    {
+        savedtime = (int)timeRemaining;
+        gameManager.UpdateScore(savedtime);
+        timeRemaining = 60f;
     }
 
     public void TimeStart()

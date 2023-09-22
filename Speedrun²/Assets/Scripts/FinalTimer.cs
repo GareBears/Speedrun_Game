@@ -10,16 +10,24 @@ public class FinalTimer : MonoBehaviour
     public bool timerIsRunning = false;
     public TMP_Text timerText;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     private void Start()
     {
         timerIsRunning = false;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void TimeStartB()
     {
         timerIsRunning = true;
         timerText.gameObject.SetActive(true);
+    }
+
+    public void ScoreCalc()
+    {
+        gameManager.FinalScore(timeUp);
     }
 
     // Update is called once per frame
