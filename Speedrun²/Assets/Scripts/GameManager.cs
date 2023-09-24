@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public GameObject firstCamera;
     public GameObject titleScreen;
     public GameObject endScreen;
+    public GameObject transScreen;
 
 
     //Timer Settings
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
         Button.SetActive(false);
         firstCamera.SetActive(false);
         titleScreen.SetActive(false);
+        transScreen.SetActive(true);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -116,6 +118,7 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         endScreen.SetActive(true);
+        transScreen.SetActive(false);
         RestartButton.SetActive(true);
         TimeScriptA.TimeStop();
         TimeScriptB.TimeStopB();
