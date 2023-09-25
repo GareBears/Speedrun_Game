@@ -9,6 +9,8 @@ TagManager:
   - Spawner
   - GameManager
   - BackgroundPoint
+  - Spikes
+  - TimerC
   layers:
   - Default
   - TransparentFX
@@ -54,4 +56,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3034351925
+    locked: 0
+  - name: Interactables
+    uniqueID: 2296953951
     locked: 0

@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour
 
     public int Score;
     private int ScoreGoal = 200;
+    //private float slowtimer = 0.0f;
+    //private float slowtime = 3.0f;
 
     public TMP_Text scoreText;
     public TMP_Text scoreLeft;
     public TMP_Text lvlTimer;
     public TMP_Text endTimer;
+    public TMP_Text slowTimer;
 
     public GameObject firstCamera;
     public GameObject titleScreen;
@@ -27,6 +30,7 @@ public class GameManager : MonoBehaviour
     //Timer Settings
     Timer TimeScriptA;
     FinalTimer TimeScriptB;
+    SlowTimer SlowTimeScript;
 
     //Looping Settings
     Spawner LoopScript;
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour
         TimeScriptA = GameObject.FindGameObjectWithTag("TimerA").GetComponent<Timer>();
         TimeScriptB = GameObject.FindGameObjectWithTag("TimerB").GetComponent<FinalTimer>();
         LoopScript = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
-        
+        SlowTimeScript = GameObject.FindGameObjectWithTag("TimerC").GetComponent<SlowTimer>();  
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -49,6 +53,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         JumpScriptB = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            BeginGame();
+        }
 
         if (ScoreGoal <= 0)
         {
@@ -106,7 +115,6 @@ public class GameManager : MonoBehaviour
         TimeScriptB.TimeStartB();
         scoreText.SetText(ScoreGoal.ToString());
         scoreLeft.SetText("Score Left: ");
-        Debug.Log("Hello");
         Button.SetActive(false);
         firstCamera.SetActive(false);
         titleScreen.SetActive(false);
@@ -136,5 +144,12 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void PlayerSlow()
+    {
+        SlowTimeScript.TimeStart();
+        //slowtimer -= Time.deltaTime;
+        //slowTimer.text = Mathf.RoundToInt(slowtimer).ToString();
     }
 }

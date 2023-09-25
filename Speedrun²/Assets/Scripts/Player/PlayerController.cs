@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +10,10 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float jumpforce;
     private float moveInput;
+    private float slowtimer;
+    private bool slow;
+
+    GameManager gameManager;
 
     //RigidBody
     private Rigidbody2D rb;
@@ -27,7 +33,11 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         rb = GetComponent<Rigidbody2D>();
+        speed = 25;
+        slowtimer = 0;
+        slow = false;
     }
 
     void Update()
@@ -46,6 +56,18 @@ public class PlayerController : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpforce;
+        }
+
+        if (slow)
+        {
+            
+            slowtimer += Time.deltaTime;
+            if(slowtimer >= 3)
+            {
+                speed = 25;
+                slowtimer = 0;
+                slow = false;
+            }
         }
     }
 
@@ -83,12 +105,19 @@ public class PlayerController : MonoBehaviour
     transform.Translate (0f, 0.01f, 0f);
     }
 
-    
-
     public void JumpBoost()
     {
-        //GetComponent<Rigidbody2D>().AddForce(transform.up * jumpforce * 100);
         rb.AddForce(transform.up * jumpforce * 100);
-        Debug.Log("This works");
+        //Debug.Log("This works");
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Spikes")
+        {
+            gameManager.PlayerSlow();
+            slow = true;
+            speed = 10;
+        }
     }
 }
