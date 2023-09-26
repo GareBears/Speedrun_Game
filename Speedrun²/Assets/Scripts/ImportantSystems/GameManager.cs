@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text lvlTimer;
     public TMP_Text endTimer;
     public TMP_Text slowTimer;
+    public TMP_Text FinalTime;
 
     public GameObject firstCamera;
     public GameObject titleScreen;
@@ -130,15 +131,8 @@ public class GameManager : MonoBehaviour
         TimeScriptA.TimeStop();
         TimeScriptB.TimeStopB();
         pauseButton.SetActive(false);
-
-        if(Score < 100)
-        {
-            Debug.Log("You Won");
-        }
-        else
-        {
-            Debug.Log("Do Better");
-        }
+        TimeScriptB.GetFinalTime();
+        
     }
 
     public void RestartGame()
@@ -158,6 +152,10 @@ public class GameManager : MonoBehaviour
         GoBackButton.SetActive(true);
         Button.SetActive(false);
         HowtoButton.SetActive(false);
+    }
 
+    public void DisplayFinalTime(float finaltime)
+    {
+        FinalTime.SetText("Final Time: " + finaltime);
     }
 }

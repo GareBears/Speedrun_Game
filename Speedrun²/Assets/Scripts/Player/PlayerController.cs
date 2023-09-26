@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     public void JumpBoost()
     {
-        rb.AddForce(transform.up * jumpforce * 100);
+        rb.AddForce(transform.up * jumpforce * 75);
         //Debug.Log("This works");
     }
 

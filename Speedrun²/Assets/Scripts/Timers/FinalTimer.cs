@@ -36,6 +36,11 @@ public class FinalTimer : MonoBehaviour
         gameManager.FinalScore(timeUp);
     }
 
+    public void GetFinalTime()
+    {
+        gameManager.DisplayFinalTime(timeUp);
+    }
+
     // Update is called once per frame
     void Update()
     {
