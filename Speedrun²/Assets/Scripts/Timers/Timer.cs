@@ -39,6 +39,11 @@ public class Timer : MonoBehaviour
         timerText.gameObject.SetActive(false);
     }
 
+    public void powerTime()
+    {
+        timeRemaining = timeRemaining + 20f;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -50,18 +55,18 @@ public class Timer : MonoBehaviour
                 timeRemaining -= Time.deltaTime;
                 DisplayTime(timeRemaining);
             }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
+            //else
+            //{
+                //Debug.Log("Time has run out!");
+                //timeRemaining = 0;
+                //timerIsRunning = false;
+           // }
         }
 
-        if(timeRemaining < 0)
-        {
-            timeRemaining = 0;
-        }
+        //if(timeRemaining < 0)
+        //{
+            //timeRemaining = 0;
+        //}
     }
 
     void DisplayTime(float timeToDisplay)
