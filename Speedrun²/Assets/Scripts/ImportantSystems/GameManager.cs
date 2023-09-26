@@ -12,9 +12,7 @@ public class GameManager : MonoBehaviour
 
     public int Score;
     private int ScoreGoal = 200;
-    //private float slowtimer = 0.0f;
-    //private float slowtime = 3.0f;
-
+    
     public TMP_Text scoreText;
     public TMP_Text scoreLeft;
     public TMP_Text lvlTimer;
@@ -25,6 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public GameObject endScreen;
     public GameObject transScreen;
+    public GameObject pauseButton;
+    public GameObject instructScreen;
 
 
     //Timer Settings
@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject Button;
     public GameObject RestartButton;
+    public GameObject GoBackButton;
+    public GameObject HowtoButton;
     
     //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -80,7 +82,6 @@ public class GameManager : MonoBehaviour
     {
         Player.transform.position = new Vector3(0f, 0.01f, 0f);
         LoopScript.SpawnPlayer();
-        //Debug.Log("TELEPORTIN TIME");
         TimeScriptA.TimeLoop();
         TimeScriptB.ScoreCalc();
     }
@@ -98,13 +99,9 @@ public class GameManager : MonoBehaviour
         Score -= (int)finalscore;
     }
 
-
-
     public void PlayerJumpBoost()
     {
         JumpScriptB.JumpBoost();
-        //Player.GetComponent<Rigidbody2D>().AddForce(Vector3.up * 100);
-        //Debug.Log("This kinda works");
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,6 +116,8 @@ public class GameManager : MonoBehaviour
         firstCamera.SetActive(false);
         titleScreen.SetActive(false);
         transScreen.SetActive(true);
+        pauseButton.SetActive(true);
+        HowtoButton.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -130,6 +129,7 @@ public class GameManager : MonoBehaviour
         RestartButton.SetActive(true);
         TimeScriptA.TimeStop();
         TimeScriptB.TimeStopB();
+        pauseButton.SetActive(false);
 
         if(Score < 100)
         {
@@ -149,7 +149,15 @@ public class GameManager : MonoBehaviour
     public void PlayerSlow()
     {
         SlowTimeScript.TimeStart();
-        //slowtimer -= Time.deltaTime;
-        //slowTimer.text = Mathf.RoundToInt(slowtimer).ToString();
+    }
+
+    public void HowTo()
+    {
+        instructScreen.SetActive(true);
+        titleScreen.SetActive(false);
+        GoBackButton.SetActive(true);
+        Button.SetActive(false);
+        HowtoButton.SetActive(false);
+
     }
 }
