@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     PlayerController JumpScriptB;
 
     public int Score;
-    private int ScoreGoal = 200;
+    private int ScoreGoal = 250;
     
     public TMP_Text scoreText;
     public TMP_Text scoreLeft;

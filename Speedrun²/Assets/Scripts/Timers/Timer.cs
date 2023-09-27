@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
     {
         savedtime = (int)timeRemaining;
         gameManager.UpdateScore(savedtime);
-        timeRemaining = 60f;
+        timeRemaining = 100f;
     }
 
     public void TimeStart()
@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour
 
     public void powerTime()
     {
-        timeRemaining = timeRemaining + 20f;
+        timeRemaining = timeRemaining + 30f;
     }
 
 
