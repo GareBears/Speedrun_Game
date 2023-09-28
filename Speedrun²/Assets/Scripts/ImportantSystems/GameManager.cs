@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject transScreen;
     public GameObject pauseButton;
     public GameObject instructScreen;
+    public GameObject Colin;
 
 
     //Timer Settings
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     public GameObject RestartButton;
     public GameObject GoBackButton;
     public GameObject HowtoButton;
+    public GameObject SecretButton;
     
     //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -77,6 +79,12 @@ public class GameManager : MonoBehaviour
         Instantiate(Player);
     }
 
+    public void OnSecretClick()
+    {
+        Colin.SetActive(true);
+        SecretButton.SetActive(false);
+    }
+
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     public void Restart()
@@ -85,6 +93,11 @@ public class GameManager : MonoBehaviour
         LoopScript.SpawnPlayer();
         TimeScriptA.TimeLoop();
         TimeScriptB.ScoreCalc();
+    }
+
+    public void HelpReturn()
+    {
+        Player.transform.position = new Vector3(0f, 0.01f, 0f);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,6 +132,8 @@ public class GameManager : MonoBehaviour
         transScreen.SetActive(true);
         pauseButton.SetActive(true);
         HowtoButton.SetActive(false);
+        SecretButton.SetActive(false);
+        Colin.SetActive(false);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -152,6 +167,7 @@ public class GameManager : MonoBehaviour
         GoBackButton.SetActive(true);
         Button.SetActive(false);
         HowtoButton.SetActive(false);
+        Colin.SetActive(false);
     }
 
     public void DisplayFinalTime(float finaltime)
