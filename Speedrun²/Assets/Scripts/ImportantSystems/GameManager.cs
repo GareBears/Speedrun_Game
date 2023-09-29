@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour
             EndGame();
             TimeScriptB.ScoreCalc();
         }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            ScoreGoal = 0;
+        }
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,7 +134,7 @@ public class GameManager : MonoBehaviour
         Button.SetActive(false);
         firstCamera.SetActive(false);
         titleScreen.SetActive(false);
-        transScreen.SetActive(true);
+        //transScreen.SetActive(true);
         pauseButton.SetActive(true);
         HowtoButton.SetActive(false);
         SecretButton.SetActive(false);
@@ -141,7 +146,7 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         endScreen.SetActive(true);
-        transScreen.SetActive(false);
+        //transScreen.SetActive(false);
         RestartButton.SetActive(true);
         TimeScriptA.TimeStop();
         TimeScriptB.TimeStopB();
